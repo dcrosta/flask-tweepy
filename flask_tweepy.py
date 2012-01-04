@@ -10,8 +10,7 @@ class Tweepy(object):
             self.init_app(app, config_prefix)
 
     def init_app(self, app, config_prefix='TWEEPY'):
-        if 'tweepy' not in app.extensions:
-            app.extensions['tweepy'] = {}
+        app.extensions.setdefault('tweepy', {})
 
         if config_prefix in app.extensions['tweepy']:
             raise Exception('duplicate config_prefix "%s"' % config_prefix)
