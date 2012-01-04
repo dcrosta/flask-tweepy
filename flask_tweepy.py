@@ -2,6 +2,16 @@ from flask import current_app
 import tweepy
 
 class Tweepy(object):
+    """The :class:`~flask_tweepy.Tweepy` class configures and creates a
+    :class:`tweepy.API` instance based on Flask configuration variables.
+    Instantiating a :class:`~flask_tweepy.Tweepy` with no arguments does not
+    configure the :class:`tweepy.API`, and will not be usable unless
+    :meth:`Tweepy.init_app` is subsequently called.
+
+    :param flask.Flask app: the Flask application to which this Tweepy
+       should be attached
+    :param str config_prefix: the configuration variable prefix
+    """
 
     def __init__(self, app=None, config_prefix='TWEEPY'):
         # this is overridden by init_app if app is supplied
@@ -10,6 +20,10 @@ class Tweepy(object):
             self.init_app(app, config_prefix)
 
     def init_app(self, app, config_prefix='TWEEPY'):
+        """Initialize this :class:`~flask_tweepy.Tweepy` if no arguments were
+        given to the constructor. Accepts the same arguments as the
+        constructor.
+        """
         app.extensions.setdefault('tweepy', {})
 
         if config_prefix in app.extensions['tweepy']:
@@ -42,7 +56,7 @@ class Tweepy(object):
 
     @property
     def api(self):
-        """Return the :class:`~tweepy.API` object if Flask-Tweepy has been
+        """Return the :class:`tweepy.API` object if Flask-Tweepy has been
         properly configured and initialized, else return None.
         """
         tweepies = current_app.extensions.get('tweepy', {})
