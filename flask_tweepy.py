@@ -4,6 +4,8 @@ import tweepy
 class Tweepy(object):
 
     def __init__(self, app=None, config_prefix='TWEEPY'):
+        # this is overridden by init_app if app is supplied
+        self.config_prefix = None
         if app is not None:
             self.init_app(app, config_prefix)
 
