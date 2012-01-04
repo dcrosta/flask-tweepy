@@ -10,7 +10,7 @@ from setuptools import setup
 setup(
     name='Flask-Tweepy',
     version='0.1',
-    # url='',
+    url='http://flask-tweepy.readthedocs.org/',
     license='BSD',
     author='Dan Crosta',
     author_email='dcrosta@late.am',
