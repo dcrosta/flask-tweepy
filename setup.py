@@ -3,6 +3,23 @@ Flask-Tweepy
 ------------
 
 Tweet easily from Flask applications.
+
+Installation
+============
+
+Flask-Tweepy is pip-installable:
+
+    pip install Flask-Tweepy
+
+You can install the latest development snapshot like so:
+
+    pip install http://github.com/dcrosta/flask-tweepy/tarball/master#egg=Flask-Tweepy-dev
+
+Development
+===========
+
+Source code is hosted in `GitHub <https://github.com/dcrosta/flask-tweepy>`_
+(contributions are welcome!)
 """
 
 from setuptools import setup
