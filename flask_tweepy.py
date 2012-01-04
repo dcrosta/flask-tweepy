@@ -43,11 +43,10 @@ class Tweepy(object):
 
     @property
     def api(self):
-        if 'tweepy' not in current_app.extensions:
-            raise Exception('current app does not have tweepy extensions')
-        if self.config_prefix not in current_app.extensions['tweepy']:
-            raise Exception('unknown/misconfigured tweepy: "%s" not in '
-                            'current_app.extensions' % self.config_prefix)
-        auth, api = current_app.extensions['tweepy'][self.config_prefix]
+        """Return the :class:`~tweepy.API` object if Flask-Tweepy has been
+        properly configured and initialized, else return None.
+        """
+        tweepies = current_app.extensions.get('tweepy', {})
+        auth, api = tweepies.get(self.config_prefix, (None, None))
         return api
 
